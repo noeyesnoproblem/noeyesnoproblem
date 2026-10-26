@@ -181,6 +181,14 @@
     </figure>
     <ul class="paper-list">
       <li><b>Simulated performance does not predict hardware performance.</b> C1 has the highest simulated speed (0.96 rot/s) but manages only 0.35 full rotations on hardware, with a 70% drop rate. Its large, rapid commands exceed what the tendon-driven hand can actually track.</li>
+    </ul>
+    <figure class="paper-fig">
+      <div class="video-slot" data-video="slewdr-sim-vs-hw">
+        <video src="videos/slewdr-sim-vs-hw.mp4" data-autoplay muted controls playsinline preload="metadata"></video>
+      </div>
+      <figcaption><b>A speed limit in training (simulation and hardware).</b> Trained with no speed limit (C1), the policy spins fast in simulation, but the real hand cannot move that fast. SlewDR (C2) trains under a random speed limit, so its simulated motion is much closer to what the real hand can do. It still drops the ball on hardware: C2 relies heavily on touch.</figcaption>
+    </figure>
+    <ul class="paper-list">
       <li><b>SlewDR makes motion trackable; STAT removes reliance on single taxels.</b> Rate-limiting actions during training (C2) produces smoother commands and brings simulated and hardware speeds closer, but every hardware trial still ends in a drop. When touch is removed from C2 in simulation, its drop rate rises to nearly 60%, showing heavy dependence on continuous tactile input. Adding STAT (C3) raises hardware performance from 0.5 to 34.75 full rotations, and removing touch from C3 raises its simulated drop rate only to 32%. The learned gait becomes the primary driver of motion, with touch providing local correction of the ball configuration.</li>
     </ul>
     <figure class="paper-fig">
